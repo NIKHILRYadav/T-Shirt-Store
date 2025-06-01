@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>T-Shirt Store</title>
+  <link href="https://cdn.jsdelivr.net/npm/boxicons@2.0.9/css/boxicons.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header>
+    <div class="logo">T-Shirt</div>
+    <div class="search-bar">
+      <input type="text" id="searchInput" placeholder="Search..." />
+    </div>
+    <div class="header-icons">
+      <div class="cart-icon" onclick="toggleCart()">
+        <i class="bx bx-cart"></i>
+        <span id="cartCount">0</span>
+      </div>
+    </div>
+  </header>
+
+  <div class="filters">
+    <button onclick="filterGender('all')" class="active">All</button>
+    <button onclick="filterGender('men')">Men</button>
+    <button onclick="filterGender('women')">Women</button>
+  </div>
+
+  <div id="productList" class="product-list"></div>
+
+  <div id="cartPanel" class="cart-panel">
+    <h3>Shopping Cart</h3>
+    <div id="cartItems"></div>
+    <div class="cart-footer">
+      <p>Total: ₹<span id="cartTotal">0</span></p>
+      <button id="clearCartBtn" onclick="clearCart()">Clear Cart</button>
+      <button id="checkoutBtn" onclick="showCheckoutForm()">Checkout</button>
+    </div>
+  </div>
+
+  <div id="productDetail" class="modal">
+    <button class="close-btn" onclick="closeProductDetail()">X</button>
+    <div class="detail-content">
+      <div class="slider-container">
+        <img id="mainImage" src="" alt="Product Image" />
+        <button id="prevSlide" class="arrow-btn"><i class='bx  bx-chevron-left-circle'  style='color:#000000'></i> </button>
+        <button id="nextSlide" class="arrow-btn"><i class='bx  bx-chevron-left-circle bx-flip-horizontal'  style='color:#000000'></i> </button>
+        <div id="thumbnailContainer" class="thumbnails"></div>
+      </div>
+      <div class="product-info">
+        <h2 id="detailTitle"></h2>
+        <p id="detailPrice"></p>
+        <p id="detailDescription"></p>
+        <button class="add-to-cart" id="detailAddToCartBtn">Add to Cart</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="checkoutForm" class="modal" style="display:none;">
+    <button class="close-btn" onclick="closeCheckoutForm()">X</button>
+    <h2>Checkout Form</h2>
+    <form id="checkout" onsubmit="submitCheckout(event)">
+      <label>
+        Name:<br />
+        <input type="text" id="userName" required />
+      </label>
+      <br />
+      <label>
+        Address:<br />
+        <textarea id="userAddress" required></textarea>
+      </label>
+      <br />
+      <label>
+        Phone Number:<br />
+        <input type="tel" id="userPhone" required />
+      </label>
+      <br />
+      <label>
+        Selected Products:<br />
+        <div id="checkoutProducts"></div>
+      </label>
+      <br />
+      <button type="submit">Place Order</button>
+    </form>
+  </div>
+  
+  <script src="products.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>
